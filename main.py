@@ -37,7 +37,7 @@ except ImportError as e:
     google_calendar_router = None
 
 try:
-    from api.integrations.marketplace_simple import router as marketplace_router
+    from api.integrations.marketplace_fixed import router as marketplace_router
     print("✅ Marketplace router imported successfully")
 except ImportError as e:
     print(f"⚠️ Marketplace router import failed: {e}")

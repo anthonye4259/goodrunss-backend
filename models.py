@@ -40,9 +40,9 @@ class User(Base):
     tiktok_id = Column(String)
     tiktok_access_token = Column(Text)
     
-    # Relationships
-    bookings = relationship("Booking", back_populates="user")
-    trainer_bookings = relationship("Booking", back_populates="trainer", foreign_keys="Booking.trainer_id")
+    # Relationships - specify exact foreign keys to avoid ambiguity
+    bookings = relationship("Booking", back_populates="user", foreign_keys="[Booking.user_id]")
+    trainer_bookings = relationship("Booking", back_populates="trainer", foreign_keys="[Booking.trainer_id]")
     courts = relationship("Court", back_populates="owner")
     games = relationship("Game", back_populates="user")
     achievements = relationship("UserAchievement", back_populates="user")
