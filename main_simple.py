@@ -12,6 +12,14 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# Import OAuth router
+try:
+    from api.integrations.oauth import router as oauth_router
+    print("✅ OAuth router imported successfully")
+except ImportError as e:
+    print(f"⚠️ OAuth router import failed: {e}")
+    oauth_router = None
+
 # Create FastAPI app
 app = FastAPI(
     title="GoodRunss Backend API",
@@ -27,6 +35,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include OAuth router
+if oauth_router:
+    app.include_router(oauth_router)
 
 @app.get("/")
 async def root():

@@ -30,6 +30,9 @@ twilio==8.10.3
 requests==2.31.0
 httpx==0.25.2
 
+# NEW: JWT Authentication
+PyJWT==2.8.0
+
 # NEW: Social Media APIs
 # Snapchat and TikTok use standard HTTP requests, no additional packages needed
 
