@@ -41,3 +41,4 @@ async def get_calendar_auth_url():
         "client_id": client_id,
         "redirect_uri": "http://localhost:8001/auth/google/callback"
     }
+

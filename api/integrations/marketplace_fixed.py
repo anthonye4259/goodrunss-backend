@@ -144,3 +144,4 @@ async def get_categories():
     return {
         "categories": ["basketball", "tennis", "golf", "soccer", "baseball", "volleyball", "equipment", "accessories"]
     }
+

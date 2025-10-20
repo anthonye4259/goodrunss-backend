@@ -224,3 +224,4 @@ if __name__ == "__main__":
     print("🔌 API available at http://localhost:8001")
     print("📚 Documentation at http://localhost:8001/docs")
     uvicorn.run(app, host="0.0.0.0", port=8001)
+

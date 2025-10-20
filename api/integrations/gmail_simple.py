@@ -43,3 +43,4 @@ async def get_gmail_auth_url():
         "client_id": client_id,
         "redirect_uri": "http://localhost:8001/auth/google/callback"
     }
+
