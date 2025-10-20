@@ -20,6 +20,14 @@ except ImportError as e:
     print(f"⚠️ OAuth router import failed: {e}")
     oauth_router = None
 
+# Import Wearables Demo router
+try:
+    from api.integrations.wearables_demo import router as wearables_demo_router
+    print("✅ Wearables Demo router imported successfully")
+except ImportError as e:
+    print(f"⚠️ Wearables Demo router import failed: {e}")
+    wearables_demo_router = None
+
 # Create FastAPI app
 app = FastAPI(
     title="GoodRunss Backend API",
@@ -39,6 +47,10 @@ app.add_middleware(
 # Include OAuth router
 if oauth_router:
     app.include_router(oauth_router)
+
+# Include Wearables Demo router
+if wearables_demo_router:
+    app.include_router(wearables_demo_router)
 
 @app.get("/")
 async def root():
