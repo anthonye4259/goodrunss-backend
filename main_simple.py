@@ -36,6 +36,14 @@ except ImportError as e:
     print(f"⚠️ HealthKit router import failed: {e}")
     healthkit_router = None
 
+# Import Whoop router
+try:
+    from api.integrations.whoop import router as whoop_router
+    print("✅ Whoop router imported successfully")
+except ImportError as e:
+    print(f"⚠️ Whoop router import failed: {e}")
+    whoop_router = None
+
 # Create FastAPI app
 app = FastAPI(
     title="GoodRunss Backend API",
@@ -63,6 +71,10 @@ if wearables_demo_router:
 # Include HealthKit router
 if healthkit_router:
     app.include_router(healthkit_router)
+
+# Include Whoop router
+if whoop_router:
+    app.include_router(whoop_router)
 
 @app.get("/")
 async def root():
@@ -134,6 +146,10 @@ async def get_integrations_status():
         "tiktok": {
             "enabled": bool(os.getenv("TIKTOK_CLIENT_KEY")),
             "features": ["login", "video_sharing", "viral_moments", "analytics", "trending_hashtags"]
+        },
+        "whoop": {
+            "enabled": bool(os.getenv("WHOOP_CLIENT_ID")),
+            "features": ["recovery", "strain", "sleep", "heart_rate", "workouts"]
         }
     }
 
